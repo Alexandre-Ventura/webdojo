@@ -86,9 +86,15 @@ describe('Formulário de Consultoria', () => {
         
         cy.contains('Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
             .should('be.visible')
+
+        cy.get('.modal')
+            .should('be.visible')
+            .find('.modal-content')
+            .should('be.visible')
+            .and('have.text', 'Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
     })
 
-    it.only('Deve verificar os campos obrigatórios', () => {
+    it('Deve verificar os campos obrigatórios', () => {
         cy.start()
         cy.submitLogin('papito@webdojo.com', 'katana123')
 
